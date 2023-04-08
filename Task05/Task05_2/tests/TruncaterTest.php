@@ -17,7 +17,7 @@ class TruncaterTest extends TestCase
         ));
         $this->assertSame("Егорова Ольга ...", $defaultTruncater->truncate(
             "Егорова Ольга Александровна",
-            ['length' => -10]
+            ['length' => -13]
         ));
         $this->assertSame("Егорова Ол*", $defaultTruncater->truncate(
             "Егорова Ольга Александровна",
