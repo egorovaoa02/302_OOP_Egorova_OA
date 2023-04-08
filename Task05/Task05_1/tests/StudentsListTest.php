@@ -15,7 +15,7 @@ class StudentsListTest extends TestCase
     public function setUp(): void
     {
         $this->student1 = new Student();
-        $this->student1->setLastname('Konyshev')->setName('Ivan')->setFaculty('IT')->setCourse(2)->setGroup(302);
+        $this->student1->setLastname('Egorova')->setName('Olga')->setFaculty('IT')->setCourse(2)->setGroup(302);
         $this->student2 = new Student();
         $this->student2->setLastname('Paramonov')->setName('Egor')->setFaculty('EF')->setCourse(2)->setGroup(302);
         $this->student3 = new Student();

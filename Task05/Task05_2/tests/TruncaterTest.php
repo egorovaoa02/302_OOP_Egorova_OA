@@ -10,18 +10,29 @@ class TruncaterTest extends TestCase
     public function testTruncate()
     {
         $defaultTruncater = new Truncater();
-        $this->assertSame("Конышев Артем Евгеньевич", $defaultTruncater->truncate("Конышев Артем Евгеньевич"));
-        $this->assertSame("Конышев Ар...", $defaultTruncater->truncate("Конышев Артем Евгеньевич", ['length' => 10]));
-        $this->assertSame("Конышев Артем ...", $defaultTruncater->truncate("Конышев Артем Евгеньевич", ['length' => -10]));
-        $this->assertSame("Конышев Ар*", $defaultTruncater->truncate("Конышев Артем Евгеньевич", ['length' => 10, 'separator' => '*']));
-        $this->assertSame("Конышев Артем Евгеньевич", $defaultTruncater->truncate("Конышев Артем Евгеньевич"));
-
+        $this->assertSame("Егорова Ольга Александровна", $defaultTruncater->truncate("Егорова Ольга Александровна"));
+        $this->assertSame("Егорова Ол...", $defaultTruncater->truncate(
+            "Егорова Ольга Александровна", 
+            ['length' => 10]
+        ));
+        $this->assertSame("Егорова Ольга ...", $defaultTruncater->truncate(
+            "Егорова Ольга Александровна",
+            ['length' => -10]
+        ));
+        $this->assertSame("Егорова Ол*", $defaultTruncater->truncate(
+            "Егорова Ольга Александровна",
+            ['length' => 10, 'separator' => '*']
+        ));
+        $this->assertSame("Егорова Ольга Александровна", $defaultTruncater->truncate("Егорова Ольга Александровна"));
 
         $overriddenTruncater1 = new Truncater(['length' => 14]);
-        $this->assertSame("Конышев Артем ...", $overriddenTruncater1->truncate("Конышев Артем Евгеньевич"));
-        $this->assertSame("Конышев Артем \\", $overriddenTruncater1->truncate("Конышев Артем Евгеньевич", ['separator' => '\\']));
+        $this->assertSame("Егорова Ольга ...", $overriddenTruncater1->truncate("Егорова Ольга Александровна"));
+        $this->assertSame("Егорова Ольга \\", $overriddenTruncater1->truncate(
+            "Егорова Ольга Александровна", 
+        ['separator' => '\\']
+    ));
 
         $overriddenTruncater2 = new Truncater(['length' => 14, 'separator' => '***']);
-        $this->assertSame("Конышев Артем ***", $overriddenTruncater2->truncate("Конышев Артем Евгеньевич"));
+        $this->assertSame("Егорова Ольга ***", $overriddenTruncater2->truncate("Егорова Ольга Александровна"));
     }
 }
